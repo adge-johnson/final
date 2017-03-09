@@ -18,7 +18,7 @@ var NoCurrentMovie = require('./components/NoCurrentMovie')
 var SortBar = require('./components/SortBar')
 
 // There should really be some JSON-formatted data in movies.json, instead of an empty array.
-// I started writing this command to extract the data from the learn-sql workspace 
+// I started writing this command to extract the data from the learn-sql workspace
 // on C9, but it's not done yet :) You must have the csvtojson command installed on your
 // C9 workspace for this to work.
 // npm install -g csvtojson
@@ -27,8 +27,8 @@ var SortBar = require('./components/SortBar')
 // Firebase configuration
 var Rebase = require('re-base')
 var base = Rebase.createClass({
-  apiKey: "...",   // replace with your Firebase application's API key
-  databaseURL: "...", // replace with your Firebase application's database URL
+  apiKey: "AIzaSyBLFw1Whu1X9NWRNZLxvhdwHWeNkcP7iVI",   // replace with your Firebase application's API key
+  databaseURL: "https://buyflix-a026e.firebaseio.com/", // replace with your Firebase application's database URL
 })
 
 var App = React.createClass({
@@ -71,18 +71,9 @@ var App = React.createClass({
   },
   renderMainSection: function() {
     if (this.state.currentView === 'map') {
-      return (
-        <div className="col-sm-12">
-          <h3>This would be an awfully good place to put a map.</h3>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <MovieList movies={this.state.movies} movieClicked={this.movieClicked} />
-          {this.renderMovieDetails()}
-        </div>
-      )
+      return <TheatreMap />)
+    } else if (this.state.currentView === "movielist")
+      return <MovieList />
     }
   },
   movieCompareByTitle: function(movieA, movieB) {
@@ -111,9 +102,7 @@ var App = React.createClass({
     }
   },
   componentDidMount: function() {
-    // We'll need to enter our Firebase configuration at the top of this file and
-    // un-comment this to make the Firebase database work
-    // base.syncState('/movies', { context: this, state: 'movies', asArray: true })
+    base.syncState('/movies', { context: this, state: 'movies', asArray: true })
   },
   render: function() {
     return (
