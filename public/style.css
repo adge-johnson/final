@@ -63,8 +63,8 @@ body {
 .sort {
   background-color: #f4f4f4;
 }
-.sort .nav-pills > li.active > a, 
-.sort .nav-pills > li.active > a:focus, 
+.sort .nav-pills > li.active > a,
+.sort .nav-pills > li.active > a:focus,
 .sort .nav-pills > li.active > a:hover {
   background-color: transparent;
   color: #444;
@@ -94,3 +94,17 @@ body {
   font-weight: 300;
   margin: 0;
 }
+.chart-or-map {
+  padding: 20px;
+}
+.map {
+  padding-bottom: 20px;
+}
+.rainbow {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: -webkit-gradient(linear,  left top,  right top,
+                    color-stop(0.00, red),
+                    color-stop(16%, orange),
+                    color-stop(32%, yellow),
+                    color-stop(48%, green));
